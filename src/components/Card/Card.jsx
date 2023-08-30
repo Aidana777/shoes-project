@@ -39,32 +39,33 @@ const Card = () => {
   };
 
   return (
-    <div className="flex-1 flex justify-center items-start mt-10 font-roboto mx-auto">
-    <div className="w-full max-w-[1200px] px-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {cards.map(card => (
-          <CardItem
-            key={card.id}
-            card={card}
-            onAddToBasket={handleAddToBasket}
+    <div className="border-l border-gray-300">
+      <div className="flex justify-center items-start mt-8 font-roboto">
+        <div className="h-4/5 w-4/5">
+          <div className="grid grid-cols-3 gap-4">
+            {cards.map(card => (
+              <CardItem
+                key={card.id}
+                card={card}
+                onAddToBasket={handleAddToBasket}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col ml-10 mr-2">
+          <RightSidebar
+            basketItems={basketItems}
+            onIncreaseQuantity={handleIncreaseQuantity}
+            onDecreaseQuantity={handleDecreaseQuantity}
+            onRemoveItem={handleRemoveItem}
           />
-        ))}
+          <div className="mt-8">
+            <OrderSummary basketItems={basketItems} />
+          </div>
+        </div>
       </div>
     </div>
-    <div className="flex flex-col ml-4 sm:ml-8 md:ml-10">
-      <RightSidebar
-        basketItems={basketItems}
-        onIncreaseQuantity={handleIncreaseQuantity}
-        onDecreaseQuantity={handleDecreaseQuantity}
-        onRemoveItem={handleRemoveItem}
-      />
-      <div className="mt-8">
-        <OrderSummary basketItems={basketItems} />
-      </div>
-    </div>
-  </div>
   );
 }
 
 export default Card;
-
