@@ -39,10 +39,10 @@ const Card = () => {
   };
 
   return (
-    <div className="border-l border-gray-300">
-      <div className="flex justify-center items-start mt-8 font-roboto">
+    <div className=" border-gray-300">
+      <div className="flex justify-center items-start mt-[60px] font-roboto">
         <div className="h-4/5 w-4/5">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-x-[70px] gap-y-[50px] ">
             {cards.map(card => (
               <CardItem
                 key={card.id}
