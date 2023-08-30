@@ -4,7 +4,7 @@ import Header from './components/Header/Header'
 
 const App = () => {
   return (
-    <div>
+    <div className="w-screen h-screen flex flex-col">
       <Header/>
       <Card/>
     </div>

@@ -38,46 +38,33 @@ const Card = () => {
     setBasketItems(updatedItems);
   };
 
-  // Рассчитываем суммы на основе содержимого корзины
-  const calculateSubtotal = () => {
-    return basketItems.reduce((total, item) => total + (item.quantity * parseInt(item.price.replace(/\$| /g, ''))), 0);
-  };
-
-  const tax = 100;
-  const shipping = 150;
-  const total = calculateSubtotal() + tax + shipping;
-
   return (
-    <div className='flex justify-center items-start mt-[50px]'>
-      <div className='h-[650px] w-[890px]'>
-        <div className='grid grid-cols-3 gap-4'>
-          {cards.map(card => (
-            <CardItem
-              key={card.id}
-              card={card}
-              onAddToBasket={handleAddToBasket}
-            />
-          ))}
-        </div>
-      </div>
-      <div className=''>
-        <RightSidebar
-          basketItems={basketItems}
-          onIncreaseQuantity={handleIncreaseQuantity}
-          onDecreaseQuantity={handleDecreaseQuantity}
-          onRemoveItem={handleRemoveItem}
-        />
-        <OrderSummary
-          subtotal={calculateSubtotal()}
-          tax={tax}
-          shipping={shipping}
-          total={total}
-        />
+    <div className="flex-1 flex justify-center items-start mt-10 font-roboto mx-auto">
+    <div className="w-full max-w-[1200px] px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {cards.map(card => (
+          <CardItem
+            key={card.id}
+            card={card}
+            onAddToBasket={handleAddToBasket}
+          />
+        ))}
       </div>
     </div>
+    <div className="flex flex-col ml-4 sm:ml-8 md:ml-10">
+      <RightSidebar
+        basketItems={basketItems}
+        onIncreaseQuantity={handleIncreaseQuantity}
+        onDecreaseQuantity={handleDecreaseQuantity}
+        onRemoveItem={handleRemoveItem}
+      />
+      <div className="mt-8">
+        <OrderSummary basketItems={basketItems} />
+      </div>
+    </div>
+  </div>
   );
 }
 
 export default Card;
-
 

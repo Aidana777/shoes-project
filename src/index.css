@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* globalStyles.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
-  margin: 0;
-  font-family:  'Roboto', sans-serif;
-}
-.bdfSFdgd{
-border: none;
+  font-family: 'Roboto', sans-serif;
 }
