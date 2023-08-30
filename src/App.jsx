@@ -41,13 +41,15 @@ const App = () => {
   return (
     <div className="w-screen h-screen flex flex-col">
       <Header totalItems={totalItems} />
-      <Card
-        basketItems={basketItems}
-        handleAddToBasket={handleAddToBasket}
-        handleIncreaseQuantity={handleIncreaseQuantity}
-        handleDecreaseQuantity={handleDecreaseQuantity}
-        handleRemoveItem={handleRemoveItem}
-      />
+      <div className='flex justify-center'>
+        <Card
+          basketItems={basketItems}
+          handleAddToBasket={handleAddToBasket}
+          handleIncreaseQuantity={handleIncreaseQuantity}
+          handleDecreaseQuantity={handleDecreaseQuantity}
+          handleRemoveItem={handleRemoveItem}
+        />
+      </div>
     </div>
   );
 }
