@@ -8,7 +8,9 @@ const Card = () => {
   const [basketItems, setBasketItems] = useState([]);
 
   const handleAddToBasket = (item) => {
-    const existingItem = basketItems.find(basketItem => basketItem.id === item.id);
+    const existingItem = basketItems.find(
+      (basketItem) => basketItem.id === item.id
+    );
     if (existingItem) {
       handleIncreaseQuantity(existingItem);
     } else {
@@ -18,14 +20,16 @@ const Card = () => {
   };
 
   const handleIncreaseQuantity = (item) => {
-    const updatedItems = basketItems.map(basketItem =>
-      basketItem.id === item.id ? { ...basketItem, quantity: basketItem.quantity + 1 } : basketItem
+    const updatedItems = basketItems.map((basketItem) =>
+      basketItem.id === item.id
+        ? { ...basketItem, quantity: basketItem.quantity + 1 }
+        : basketItem
     );
     setBasketItems(updatedItems);
   };
 
   const handleDecreaseQuantity = (item) => {
-    const updatedItems = basketItems.map(basketItem =>
+    const updatedItems = basketItems.map((basketItem) =>
       basketItem.id === item.id && basketItem.quantity > 1
         ? { ...basketItem, quantity: basketItem.quantity - 1 }
         : basketItem
@@ -34,38 +38,38 @@ const Card = () => {
   };
 
   const handleRemoveItem = (item) => {
-    const updatedItems = basketItems.filter(basketItem => basketItem.id !== item.id);
+    const updatedItems = basketItems.filter(
+      (basketItem) => basketItem.id !== item.id
+    );
     setBasketItems(updatedItems);
   };
 
   return (
-    <div className=" border-gray-300">
-      <div className="flex justify-center items-start mt-[60px] font-roboto">
-        <div className="h-4/5 w-4/5">
-          <div className="grid grid-cols-3 gap-x-[70px] gap-y-[50px] ">
-            {cards.map(card => (
-              <CardItem
-                key={card.id}
-                card={card}
-                onAddToBasket={handleAddToBasket}
-              />
-            ))}
-          </div>
+    <div className="w-full  h-max flex ">
+      <div className="DesktopHD:w-[1230px] pb-[230px]  pt-[60px]  flex justify-center border-r-[1px]  border-[#CFCFCF]   ">
+        <div className=" DesktopHD:w-[90%] Desktop:w-[98%] h-max flex flex-wrap gap-y-[50px] gap-x-[70px] justify-center fontText ">
+          {cards.map((card) => (
+            <CardItem
+              key={card.id}
+              card={card}
+              onAddToBasket={handleAddToBasket}
+            />
+          ))}
         </div>
-        <div className="flex flex-col ml-10 mr-2">
-          <RightSidebar
-            basketItems={basketItems}
-            onIncreaseQuantity={handleIncreaseQuantity}
-            onDecreaseQuantity={handleDecreaseQuantity}
-            onRemoveItem={handleRemoveItem}
-          />
-          <div className="mt-8">
-            <OrderSummary basketItems={basketItems} />
-          </div>
-        </div>
+      </div>
+      <div className="w-[1px] h-full bg-[#CFCFCF]  Tablet:hidden " />
+      <div className=" w-[410px]  Tablet:hidden">
+        <RightSidebar
+          basketItems={basketItems}
+          onIncreaseQuantity={handleIncreaseQuantity}
+          onDecreaseQuantity={handleDecreaseQuantity}
+          onRemoveItem={handleRemoveItem}
+        />
+        <div className="w-[100%] h-[1px] bg-[#CFCFCF] mb-[40px]"></div>
+        <OrderSummary basketItems={basketItems} />
       </div>
     </div>
   );
-}
+};
 
 export default Card;
